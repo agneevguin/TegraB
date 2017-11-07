@@ -1,0 +1,8 @@
+prefix=/home/nvidia/catkin_ws/devel
+
+Name: dw_wrapper
+Description: Description of dw_wrapper
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/nvidia/catkin_ws/devel/lib -ldw_wrapper
+Requires: 
