@@ -31,7 +31,17 @@
 * Try visualization : `rosrun image_view image_view image:=/camera/0/0/image theora` (Doesnt work yet)
 
 ### Run Velodyne
-* 
+* `sudo apt-get install ros-kinetic-velodyne-* (Dependencies and Documentation)`
+1. sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF6D3CDA
+2. sudo sh -c 'echo "deb [ arch=amd64 ] http://packages.dataspeedinc.com/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-dataspeed-public.list'
+3. sudo apt-get update
+4. sudo sh -c 'echo "yaml http://packages.dataspeedinc.com/ros/ros-public-'$ROS_DISTRO'.yaml '$ROS_DISTRO'" > /etc/ros/rosdep/sources.list.d/30-dataspeed-public-'$ROS_DISTRO'.list'
+5. rosdep update
+6. cd ~/catkin_ws/src
+git clone https://github.com/ros-drivers/velodyne.git
+(sudo apt-get install libpcap0.8-dev)
+cd ~/catkin_ws
+catkin_make
 
 ## Debugging
 
