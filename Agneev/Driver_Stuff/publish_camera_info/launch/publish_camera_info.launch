@@ -1,0 +1,5 @@
+<launch>
+    	<node pkg="publish_camera_info" name="publish_camera_info" type="yaml_to_camera_info_publisher.py" output="screen">
+	  <param name="filename" value="ost.yaml"/>
+    	</node>
+</launch>

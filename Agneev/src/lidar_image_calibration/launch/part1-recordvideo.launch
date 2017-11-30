@@ -1,0 +1,10 @@
+<launch>
+	<node name="rosbag" pkg="rosbag" type="play" args="/home/nvidia/bagfiles/2017-11-10-02-34-34-part1-rectified.bag"/>
+	<node name="image_proc" pkg="image_proc" type="image_proc" respawn="false" ns="/sensors/camera">
+		<remap from="image_raw" to="image_color"/>
+	</node>
+	<node name="rect_video_recorder" pkg="image_view" type="video_recorder" respawn="false">
+		<remap from="image" to="/sensors/camera/image_rect_color"/>
+		<!--<remap from="filename" to="calibration_part1.avi"/>-->
+	</node>
+</launch>

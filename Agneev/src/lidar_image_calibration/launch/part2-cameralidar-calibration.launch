@@ -1,0 +1,6 @@
+<launch>
+	<node name="rosbag" pkg="rosbag" type="play" args="/home/nvidia/bagfiles/2017-11-22-11-34-07.bag"/>
+	<node name="lidar_image_calibration" pkg="lidar_image_calibration" type="lidar_image_calibration.py" args="/home/nvidia/Scania/Agneev/ros-camera-lidar-calibration/data/lidar_image_calibration_data.json Images/lidar_calibration_frame.jpg Results/Images/lidar_calibration_output.jpg " output="screen">
+		<remap from="camera" to="/camera/0/0/camera_info"/>
+	</node>
+</launch>

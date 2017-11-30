@@ -1,0 +1,10 @@
+<launch>
+	<arg name="filepath" default="/home/nvidia/catkin_ws/src/camera_info/scripts/ost.yaml"/>
+    	<node pkg="camera_info" name="camera_info_yaml" type="yaml_to_camera_info_publisher.py" output="screen" args="$(arg filepath)">
+		<param name="file_name" type="string" value="$(arg filepath)" />
+	</node>
+
+	<node pkg="camera_info" name="camera_info" type="camera_info_node" output="screen" />
+
+
+</launch>
