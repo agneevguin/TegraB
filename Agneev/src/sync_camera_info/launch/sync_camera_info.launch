@@ -1,0 +1,24 @@
+<launch>
+	<!-- Publish the camera info -->
+	<arg name="filepath" default="/home/nvidia/catkin_ws/src/sync_camera_info/scripts/ost.yaml"/>
+    	<node pkg="sync_camera_info" name="camera_info_yaml" type="yaml_to_camera_info_publisher.py" output="screen" args="$(arg filepath)">
+		<param name="file_name" type="string" value="$(arg filepath)" />
+	</node>
+
+	<!-- Synchronize camera info with the image -->
+	<node pkg="sync_camera_info" name="sync_camera_info" type="sync_camera_info_node" output="screen" />
+
+	<!-- Initialize image proc -->
+	<node pkg="image_proc" type="image_proc" name="image_proc" ns="camera/0/0" />
+
+	<!-- Nodelet manager for this pipeline -->
+	<!--node pkg="nodelet" type="nodelet" name="cam_nodelet_manager" output="screen" /-->
+
+	<!-- Setup rectify nodelet -->
+	<node pkg="nodelet" type="nodelet" name="image_proc_nodelet" args="load image_proc/rectify cam_nodelet_manager" output="screen">
+		<remap from="camera_info" to="camera/0/0/camera_info" />
+		<remap from="image_mono" to="camera/0/0/image_mono" />
+		<remap from="image_rect" to="camera/0/0/image_rect" />
+	</node>
+
+</launch>

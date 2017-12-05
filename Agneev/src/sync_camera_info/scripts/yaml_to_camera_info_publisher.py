@@ -55,7 +55,7 @@ if __name__ == "__main__":
     args = arg_parser.parse_args()
     filename = args.filename
     '''
-    filename = rospy.get_param('file_name', '/home/nvidia/catkin_ws/src/camera_info/scripts/ost.yaml')
+    filename = rospy.get_param('file_name', '/home/nvidia/catkin_ws/src/sync_camera_info/scripts/ost.yaml')
     
     # Parse yaml file
     camera_info_msg = yaml_to_CameraInfo(filename)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # Initialize publisher node
     rospy.init_node("camera_info_publisher", anonymous=True)
     publisher = rospy.Publisher("/camera/0/0/camera_info", CameraInfo, queue_size=10)
-    rate = rospy.Rate(300)
+    rate = rospy.Rate(30)
 
     # Run publisher
     while not rospy.is_shutdown():
